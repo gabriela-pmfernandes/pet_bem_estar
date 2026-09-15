@@ -1,0 +1,17 @@
+# .gitignore
+
+# Maven
+target/
+
+# Eclipse
+bin/
+.settings/
+.project
+.classpath
+
+# Java
+*.class
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
