@@ -25,6 +25,11 @@ public class Tutor {
 		this.telefone = telefone;
 	}
 	
+	public void adicionarAnimal(Animal animal) {
+		animais.add(animal);
+		animal.setTutor(this);
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -45,6 +50,7 @@ public class Tutor {
 		this.telefone = telefone;
 	}
 	
+		
 	@Override
 	public String toString() {
 		return nome;

@@ -18,9 +18,11 @@ public class Animal {
 	private Tutor tutor;
 	
 	private List<Atendimento> atendimentos = new ArrayList<>();
+	
 	 public Animal() {
 		 
 	 }
+	 
 	 public Animal(String nome, Especie especie, Porte porte) {
 		 this.nome = nome;
 		 this.especie = especie;
@@ -29,6 +31,7 @@ public class Animal {
 	 
 	 public void adicionarAtendimento(Atendimento atendimento) {
 		 atendimentos.add(atendimento);
+		 atendimento.setAnimal(this);
 		 
 	 }
 	 
@@ -63,10 +66,6 @@ public class Animal {
 	 
 	 public Tutor getTutor() {
 		 return tutor;
-	 }
-	 
-	 public void setTuor(Tutor tutor) {
-		 this.tutor = tutor;
 	 }
 	 
 	 public void setTutor(Tutor tutor) {

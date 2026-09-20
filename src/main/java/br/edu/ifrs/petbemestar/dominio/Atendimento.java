@@ -22,7 +22,7 @@ public class Atendimento {
 		
 	}
 	
-	public Atendimento(LocalDateTime dataHor, TipoAtendimento tipo) {
+	public Atendimento(LocalDateTime dataHora, TipoAtendimento tipo) {
 		this.dataHora = dataHora;
 		this.tipo = tipo;
 		this.situacao = SituacaoAtendimento.AGENDADO;
@@ -65,7 +65,7 @@ public class Atendimento {
 	
 	@Override
 	public String toString() {
-		return tipo + "em" + "(" + situacao +")";
+		return tipo + "em" + dataHora + "(" + situacao +")";
 	}
 
 }
