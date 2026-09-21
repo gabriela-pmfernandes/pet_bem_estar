@@ -9,8 +9,11 @@ import br.edu.ifrs.petbemestar.dominio.Porte;
 import br.edu.ifrs.petbemestar.dominio.SituacaoAtendimento;
 import br.edu.ifrs.petbemestar.dominio.TipoAtendimento;
 import br.edu.ifrs.petbemestar.dominio.Tutor;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
-public class Principal {
+public class PrincipalManual {
 	public static void main(String[] args) {
 		Tutor rosa = new Tutor("Rosa", "(51)99999-0000");
 		
@@ -44,10 +47,36 @@ public class Principal {
 		System.out.println();
 		
 		for(Animal animal : rosa.getAnimais()) {
+			System.out.println(animal + "|" + animal.getAtendimentos());
+			System.out.println();
+		}
+		
+		for(Animal animal : rosa.getAnimais()) {
 			Atendimento ultimo = animal.ultimoAtendimentoRealizado();
 			System.out.println("Última vez que " + animal.getNome() + "veio: " + (ultimo==null ? "nunca veio" : ultimo.getDataHora().toString()));
 		}
 		
+		EntityManagerFactory emf =Persistence.createEntityManagerFactory("pet-bem-estar-pu");
+		EntityManager em = emf.createEntityManager();
+		
+		em.getTransaction().begin();
+		em.persist(rosa);
+		em.persist(mimi);
+		em.persist(thor);
+		em.persist(frajola);
+		em.persist(nina);
+		
+		em.persist(banhoDaMimi);
+		em.persist(banhoDoThor);
+		em.persist(tosaDoFrajola);
+		em.persist(consultaDaNina);
+		
+		em.getTransaction().commit();
+		System.out.println("Animal: "+mimi.getNome());
+		System.out.println("Animal: "+frajola.getNome());
+		
+		em.close();
+		emf.close();
 		
 	}
 }

@@ -3,20 +3,32 @@ package br.edu.ifrs.petbemestar.dominio;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Animal {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String nome;
+	@Enumerated(EnumType.STRING)
 	private Especie especie;
+	@Enumerated(EnumType.STRING)
 	private Porte porte;
 	
+	@ManyToOne
 	private Tutor tutor;
-	
+	@OneToMany(mappedBy = "animal")//usar somente na classe PrincipalManual e comentar a classe PrincipalAutomatica
+	//@OneToMany(mappedBy = "animal", cascade = CascadeType.ALL)
 	private List<Atendimento> atendimentos = new ArrayList<>();
 	
 	 public Animal() {
@@ -70,6 +82,10 @@ public class Animal {
 	 
 	 public void setTutor(Tutor tutor) {
 		 this.tutor = tutor;
+	 }
+	 
+	 public List<Atendimento> getAtendimentos() {
+		 return atendimentos;
 	 }
 	 
 	 @Override
