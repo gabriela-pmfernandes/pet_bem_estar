@@ -19,8 +19,8 @@ public class Tutor {
 	private String nome;
 	private String telefone;
 	
-	@OneToMany(mappedBy = "tutor")//usar somente na classe PrincipalManual e comentar a classe PrincipalAutomatica
-	//@OneToMany(mappedBy = "tutor", cascade = CascadeType.ALL)
+	//@OneToMany(mappedBy = "tutor")//usar somente na classe PrincipalManual e comentar a classe PrincipalAutomatica
+	@OneToMany(mappedBy = "tutor", cascade = CascadeType.ALL)
 	private List<Animal> animais = new ArrayList<>();
 	
 	public Tutor() {

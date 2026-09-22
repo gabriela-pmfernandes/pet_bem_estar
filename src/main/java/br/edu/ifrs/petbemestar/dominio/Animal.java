@@ -27,8 +27,8 @@ public class Animal {
 	
 	@ManyToOne
 	private Tutor tutor;
-	@OneToMany(mappedBy = "animal")//usar somente na classe PrincipalManual e comentar a classe PrincipalAutomatica
-	//@OneToMany(mappedBy = "animal", cascade = CascadeType.ALL)
+	//@OneToMany(mappedBy = "animal")//usar somente na classe PrincipalManual e comentar a classe PrincipalAutomatica
+	@OneToMany(mappedBy = "animal", cascade = CascadeType.ALL)
 	private List<Atendimento> atendimentos = new ArrayList<>();
 	
 	 public Animal() {
